@@ -1,9 +1,10 @@
+import { useState } from 'react'
 import WelcomeMessage from './components/WelcomeMessage'
 import Header from './components/Header'
 import MainContent from './components/MainContent'
 import Footer from './components/Footer'
 import UserProfile from './components/UserProfile'
-import { useState } from 'react'
+import Counter from './components/Counter'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -22,18 +23,19 @@ function App() {
         </a>
       </div>
 
-      
       <WelcomeMessage />
-
-       <Header />
+      <Header />
       <MainContent />
       <Footer />
 
-<UserProfile 
-  name="Alice" 
-  age={25} 
-  bio="Loves hiking and photography" 
-/>
+      <UserProfile 
+        name="Alice" 
+        age={25} 
+        bio="Loves hiking and photography" 
+      />
+
+      <h1>React Counter App</h1>
+      <Counter />
 
       <h1>Vite + React</h1>
       <div className="card">
@@ -44,6 +46,7 @@ function App() {
           Edit <code>src/App.jsx</code> and save to test HMR
         </p>
       </div>
+
       <p className="read-the-docs">
         Click on the Vite and React logos to learn more
       </p>
