@@ -2,57 +2,25 @@ import { create } from 'zustand';
 
 export const useRecipeStore = create((set) => ({
   recipes: [],
-  searchTerm: '',
-  filteredRecipes: [],
+  favorites: [],
+  recommendations: [],
 
-  setSearchTerm: (term) => {
-    set({ searchTerm: term });
+  addFavorite: (recipeId) =>
     set((state) => ({
-      filteredRecipes: state.recipes.filter(recipe =>
-        recipe.title.toLowerCase().includes(term.toLowerCase())
-      )
-    }));
-  },
-
-  filterRecipes: () =>
-    set((state) => ({
-      filteredRecipes: state.recipes.filter(recipe =>
-        recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
-      )
+      favorites: [...new Set([...state.favorites, recipeId])],
     })),
 
-  addRecipe: (newRecipe) =>
-    set((state) => {
-      const updatedRecipes = [...state.recipes, newRecipe];
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: updatedRecipes.filter(recipe =>
-          recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
-        )
-      };
-    }),
+  removeFavorite: (recipeId) =>
+    set((state) => ({
+      favorites: state.favorites.filter((id) => id !== recipeId),
+    })),
 
-  deleteRecipe: (id) =>
+  generateRecommendations: () =>
     set((state) => {
-      const updatedRecipes = state.recipes.filter(recipe => recipe.id !== id);
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: updatedRecipes.filter(recipe =>
-          recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
-        )
-      };
-    }),
-
-  updateRecipe: (updatedRecipe) =>
-    set((state) => {
-      const updatedRecipes = state.recipes.map(recipe =>
-        recipe.id === updatedRecipe.id ? updatedRecipe : recipe
+      const recommended = state.recipes.filter(
+        (recipe) =>
+          state.favorites.includes(recipe.id) && Math.random() > 0.5
       );
-      return {
-        recipes: updatedRecipes,
-        filteredRecipes: updatedRecipes.filter(recipe =>
-          recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
-        ),
-      };
+      return { recommendations: recommended };
     }),
 }));
