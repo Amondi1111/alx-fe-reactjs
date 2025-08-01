@@ -52,7 +52,7 @@ export const useRecipeStore = create((set) => ({
         recipes: updatedRecipes,
         filteredRecipes: updatedRecipes.filter(recipe =>
           recipe.title.toLowerCase().includes(state.searchTerm.toLowerCase())
-        )
+        ),
       };
     }),
 }));
