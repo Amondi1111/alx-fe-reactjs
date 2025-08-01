@@ -4,6 +4,10 @@ import { useRecipeStore } from './recipeStore';
 const SearchBar = () => {
   const setSearchTerm = useRecipeStore(state => state.setSearchTerm);
 
+   const handleChange = (e) => {
+    setSearchTerm(e.target.value);
+  };
+  
   return (
     <input
       type="text"
