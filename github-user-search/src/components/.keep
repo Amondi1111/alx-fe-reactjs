@@ -1,0 +1,4 @@
+function Dummy() {
+  return <div>Placeholder Component</div>;
+}
+export default Dummy;
