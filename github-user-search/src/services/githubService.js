@@ -7,7 +7,7 @@ export async function fetchUserData(username) {
 
   const response = await fetch(`${BASE_URL}/${username}`, {
     headers: {
-      Authorization: `Bearer ${GITHUB_TOKEN}`,
+      Authorization: `token ${GITHUB_TOKEN}`,
     },
   });
 
