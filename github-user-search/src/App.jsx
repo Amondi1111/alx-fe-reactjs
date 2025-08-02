@@ -1,7 +1,7 @@
-// src/App.jsx
 import { useState } from 'react';
 import './App.css';
-import { fetchGitHubUser } from './services/githubService';
+import { fetchUserData } from './services/githubService';
+import Search from './components/Search';
 
 function App() {
   const [username, setUsername] = useState('');
@@ -9,7 +9,7 @@ function App() {
 
   const handleSearch = async () => {
     try {
-      const data = await fetchGitHubUser(username);
+      const data = await fetchUserData(username);
       console.log('Fetched data:', data);
       setUser(data);
     } catch (err) {
@@ -35,6 +35,7 @@ function App() {
           <h2>{user.name}</h2>
           <p>@{user.login}</p>
           <a href={user.html_url} target="_blank">View Profile</a>
+        <Search />
         </div>
       )}
     </div>
