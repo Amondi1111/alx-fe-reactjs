@@ -40,7 +40,7 @@ function buildQuery({ username, location, minRepos }) {
 
 export async function searchUsers({ username, location, minRepos, page = 1, per_page = 10 } = {}) {
   const q = buildQuery({ username, location, minRepos });
-  const url = `/search/users?q=${encodeURIComponent(q)}&page=${page}&per_page=${per_page}`;
+  const url = `https://api.github.com/search/users?q=${encodeURIComponent(q)}&page=${page}&per_page=${per_page}`;
 
   const res = await axiosInstance.get(url);
   return res.data;
