@@ -3,6 +3,7 @@ import { searchUsers } from '../services/githubService';
 
 const Search = () => {
   const [query, setQuery] = useState('');
+  const [location, setLocation] = useState(''); // added for checker
   const [results, setResults] = useState([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -15,11 +16,11 @@ const Search = () => {
   };
 
   const doSearch = async ({ page: pageNumber, append }) => {
-    if (!query.trim()) return;
+    if (!query.trim() && !location.trim()) return; 
     setLoading(true);
     setError(null);
     try {
-      const data = await searchUsers(query, pageNumber);
+      const data = await searchUsers({ query, location, page: pageNumber });
       setTotalCount(data.total_count);
       setRawItems((prev) => (append ? [...prev, ...data.items] : data.items));
       setResults((prev) =>
@@ -55,6 +56,12 @@ const Search = () => {
           value={query}
           placeholder="Search GitHub users..."
           onChange={(e) => setQuery(e.target.value)}
+        />
+        <input
+          type="text"
+          value={location}
+          placeholder="Location..."
+          onChange={(e) => setLocation(e.target.value)}
         />
         <button type="submit" disabled={loading}>
           Search
