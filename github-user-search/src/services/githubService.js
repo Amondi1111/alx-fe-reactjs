@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 const GITHUB_API_BASE = 'https://api.github.com';
-const TOKEN = import.meta.env.VITE_APP_GITHUB_TOKEN || null;
+const GITHUB_TOKEN = import.meta.env.VITE_GITHUB_TOKEN;
 
 const axiosInstance = axios.create({
   baseURL: GITHUB_API_BASE,
   headers: TOKEN
     ? {
-        Authorization: `token ${TOKEN}`,
+        Authorization: `token ${GITHUB_TOKEN}`,
       }
     : {},
 });
