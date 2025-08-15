@@ -35,12 +35,12 @@ export default function RecipeDetail() {
       </section>
        
 
-          {/* Steps */}
+          {/* Instructions */}
       <section className="mt-6">
         <h2 className="text-xl font-semibold mb-2">Instructions</h2>
         <ol className="list-decimal pl-5 space-y-2">
-          {recipe.steps?.map((step, index) => (
-            <li key={index}>{step}</li>
+          {recipe.Instructions?.map((Instructions, index) => (
+            <li key={index}>{Instructions}</li>
           ))}
         </ol>
       </section>
