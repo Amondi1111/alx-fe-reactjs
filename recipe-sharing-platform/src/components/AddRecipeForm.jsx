@@ -30,8 +30,8 @@ export default function AddRecipeForm({ onAddRecipe }) {
     const newRecipe = {
       id: Date.now(),
       title,
-      ingredients: ingredients.split(",").map((item) => item.trim()),
-      instructions: instructions.split("\n").map((step) => step.trim()), 
+      Ingredients: Ingredients.split(",").map((item) => item.trim()),
+      Instructions: Instructions.split("\n").map((step) => step.trim()), 
     };
 
     if (onAddRecipe) onAddRecipe(newRecipe);
