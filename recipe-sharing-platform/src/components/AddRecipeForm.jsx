@@ -31,7 +31,7 @@ export default function AddRecipeForm({ onAddRecipe }) {
       id: Date.now(),
       title,
       ingredients: ingredients.split(",").map((item) => item.trim()),
-      instructions: instructions.split("\n").map((step) => step.trim()), // allow multi-line steps
+      instructions: instructions.split("\n").map((step) => step.trim()), 
     };
 
     if (onAddRecipe) onAddRecipe(newRecipe);
@@ -44,7 +44,7 @@ export default function AddRecipeForm({ onAddRecipe }) {
   };
 
   return (
-    <div className="max-w-2xl mx-auto bg-white shadow-lg rounded-2xl p-6 mt-8">
+    <div className="bg-white shadow-lg rounded-2xl p-4 md:p-8 max-w-md md:max-w-2xl mx-auto">
       <h2 className="text-2xl font-bold mb-4 text-gray-800">Add a New Recipe</h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -55,7 +55,7 @@ export default function AddRecipeForm({ onAddRecipe }) {
           </label>
           <input
             type="text"
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full border rounded-lg p-2 md:p-3 focus:outline-none focus:ring-2 focus:ring-blue-400"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder="Enter recipe title"
@@ -71,7 +71,7 @@ export default function AddRecipeForm({ onAddRecipe }) {
             Ingredients (comma separated)
           </label>
           <textarea
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full border rounded-lg p-2 md:p-3 h-24 focus:outline-none focus:ring-2 focus:ring-blue-400"
             value={Ingredients}
             onChange={(e) => setIngredients(e.target.value)}
             placeholder="e.g. flour, sugar, eggs"
@@ -86,7 +86,7 @@ export default function AddRecipeForm({ onAddRecipe }) {
             Preparation Instructions
           </label>
           <textarea
-            className="w-full p-3 border rounded-lg focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="w-full border rounded-lg p-2 md:p-3 h-32 focus:outline-none focus:ring-2 focus:ring-blue-400"
             value={Instructions}
             onChange={(e) => setInstructions(e.target.value)}
             placeholder="Write preparation instructions on a new line..."
@@ -98,7 +98,7 @@ export default function AddRecipeForm({ onAddRecipe }) {
         {/* Submit button */}
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300"
+          className="w-full md:w-auto bg-blue-600 text-white px-4 md:px-6 py-2 md:py-3 rounded-lg shadow hover:bg-blue-700 transition"
         >
           Add Recipe
         </button>
