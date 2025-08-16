@@ -4,7 +4,7 @@
     "title": "Spaghetti Carbonara",
     "summary": "A classic Italian pasta dish with eggs, cheese, bacon, and black pepper.",
     "image": "https://via.placeholder.com/150",
-    "ingredients": [
+    "Ingredients": [
       "400g spaghetti",
       "200g pancentta diced",
       "2 large eggs",
@@ -27,7 +27,7 @@
     "title": "Chicken Tikka Masala",
     "summary": "Chunks of grilled chicken (tikka) cooked in a smooth buttery & creamy tomato based gravy.",
     "image": "https://via.placeholder.com/150",
-    "ingredients": [
+    "Ingredients": [
       "1 pound boneless, skinless chicken breast, cut into ",
       "1/2 cup plain yogurt",
       "1 tablespoon lemon juice",
@@ -44,7 +44,7 @@
       "1/4 cup chopped cilantro."
 
     ],
-    "instructions": [
+    "Instructions": [
       "In a large bowl, marinate the chicken cubes in a mixture of yorghurt, lemon juice juice, cumin, corriander, tumeric, red pepper flakes, salt, and pepper for atleast 30 minutes or upto overnight",
       "Heat the olive oil in a large skillet over medium-high heat. Add the marinated chicken and cook untill browned on all sides",
       "Remove the chicken from the skillet and set aside",

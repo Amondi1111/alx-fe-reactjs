@@ -28,7 +28,7 @@ export default function RecipeDetail() {
       <section className="mb-6">
         <h2 className="shadow-lg text-2xl font-semibold mb-2">Ingredients</h2>
         <ul className="list-disc list-inside space-y-1">
-          {recipe.ingredients?.map((item, index) => (
+          {recipe.Ingredients?.map((item, index) => (
             <li key={index}>{item}</li>
           ))}
         </ul>
@@ -37,10 +37,10 @@ export default function RecipeDetail() {
 
           {/* Instructions Section */}
       <section className="mt-6">
-        <h2 className="shadow-lg text-xl font-semibold mb-2">instructions</h2>
+        <h2 className="shadow-lg text-xl font-semibold mb-2">Instructions</h2>
         <ol className="list-decimal pl-5 space-y-2">
-          {recipe.instructions?.map((instructions, index) => (
-            <li key={index}>{instructions}</li>
+          {recipe.Instructions?.map((Instructions, index) => (
+            <li key={index}>{Instructions}</li>
           ))}
         </ol>
       </section>

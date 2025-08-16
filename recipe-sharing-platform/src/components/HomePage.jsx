@@ -14,7 +14,7 @@ export default function HomePage() {
       <h1 className="text-2xl md:text-3xl font-bold text-left text-indigo-600 mb-6">
         Recipe Sharing Platform
       </h1>
-
+    
       
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
         {recipe.map((recipe) => (
@@ -33,10 +33,19 @@ export default function HomePage() {
              <Link to={`/recipe/${recipe.id}`} className="inline-block mt-4 text-indigo-600 hover:underline">
      View Recipe →
          </Link>
+        
             </div>
           </div>
         ))}
+        <div className="mb-6">
+    <Link to="/add-recipe">
+      <button className="bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-700 transition">
+        + Add New Recipe
+      </button>
+    </Link>
+  </div>
       </div>
     </div>
   );
 }
+
