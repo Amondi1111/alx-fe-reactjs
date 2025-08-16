@@ -31,7 +31,7 @@ export default function AddRecipeForm({ onAddRecipe }) {
       id: Date.now(),
       title,
       Ingredients: Ingredients.split(",").map((item) => item.trim()),
-      Instructions: Instructions.split("\n").map((step) => step.trim()), 
+      Instructions: Instructions.split("\n").map((Instructions) => Instructions.trim()), 
     };
 
     if (onAddRecipe) onAddRecipe(newRecipe);
