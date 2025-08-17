@@ -2,23 +2,23 @@ import { useState } from "react";
 
 export default function AddRecipeForm({ onAddRecipe }) {
   const [title, setTitle] = useState("");
-  const [Ingredients, setIngredients] = useState("");
-  const [Instructions, setInstructions] = useState("");
+  const [ingredients, setIngredients] = useState("");
+  const [steps, setSteps] = useState("");
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     let formErrors = {};
 
     if (!title.trim()) formErrors.title = "Title is required.";
-    if (!Ingredients.trim()) {
-      formErrors.Ingredients = "Ingredients are required.";
-    } else if (Ingredients.split(",").length < 3) {
-      formErrors.Ingredients = "Please add at least 3 ingredients.";
+    if (!ingredients.trim()) {
+      formErrors.ingredients = "Ingredients are required.";
+    } else if (ingredients.split(",").length < 3) {
+      formErrors.ingredients = "Please add at least 3 ingredients.";
     }
-    if (!Instructions.trim()) {
-        formErrors.Instructions = "Preparation instructions are required.";
+    if (!steps.trim()) {
+      formErrors.steps = "Preparation steps are required.";
     }
-    
+
     setErrors(formErrors);
     return Object.keys(formErrors).length === 0;
   };
@@ -30,8 +30,8 @@ export default function AddRecipeForm({ onAddRecipe }) {
     const newRecipe = {
       id: Date.now(),
       title,
-      Ingredients: Ingredients.split(",").map((item) => item.trim()),
-      Instructions: Instructions.split("\n").map((Instructions) => Instructions.trim()), 
+      ingredients: ingredients.split(",").map((item) => item.trim()),
+      steps: steps.split("\n").map((step) => step.trim()), 
     };
 
     if (onAddRecipe) onAddRecipe(newRecipe);
@@ -39,7 +39,7 @@ export default function AddRecipeForm({ onAddRecipe }) {
     // Reset Form
     setTitle("");
     setIngredients("");
-    setInstructions("");
+    setSteps("");
     setErrors({});
   };
 
@@ -72,27 +72,31 @@ export default function AddRecipeForm({ onAddRecipe }) {
           </label>
           <textarea
             className="w-full border rounded-lg p-2 md:p-3 h-24 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            value={Ingredients}
+            value={ingredients}
             onChange={(e) => setIngredients(e.target.value)}
             placeholder="e.g. flour, sugar, eggs"
             rows="3"
           />
-          {errors.Ingredients && <p className="text-red-500 text-sm mt-1">{errors.Ingredients}</p>}
+          {errors.ingredients && (
+            <p className="text-red-500 text-sm mt-1">{errors.ingredients}</p>
+          )}
         </div>
 
-        {/* Preparation Instructions */}
+        {/* Steps */}
         <div>
           <label className="block text-gray-700 font-medium mb-1">
-            Preparation Instructions
+            Preparation Steps
           </label>
           <textarea
             className="w-full border rounded-lg p-2 md:p-3 h-32 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            value={Instructions}
-            onChange={(e) => setInstructions(e.target.value)}
-            placeholder="Write preparation instructions on a new line..."
+            value={steps}
+            onChange={(e) => setSteps(e.target.value)}
+            placeholder="Write each step on a new line..."
             rows="5"
           />
-         {errors.instructions && <p className="text-red-500 text-sm mt-1">{errors.instructions}</p>}
+          {errors.steps && (
+            <p className="text-red-500 text-sm mt-1">{errors.steps}</p>
+          )}
         </div>
 
         {/* Submit button */}
