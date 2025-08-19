@@ -20,8 +20,10 @@ function PostsComponent() {
   } = useQuery({
     queryKey: ['posts'],  
     queryFn: fetchPosts,  
-    staleTime: 5000,       
-    cacheTime: 1000 * 60,  
+    staleTime: 5000,          
+    cacheTime: 1000 * 60,    
+    refetchOnWindowFocus: true, 
+    keepPreviousData: true,    
   });
 
   if (isLoading) return <p>Loading posts...</p>;
