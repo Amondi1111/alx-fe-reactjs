@@ -1,37 +1,33 @@
-import { useState } from 'react';
+import React, { useState } from "react";
 
-const ControlledForm = () => {
-    const [formData, setFormData] = useState({ username: '', email: '', password: '' });
+const RegistrationForm = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
 
-    const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData(prevState => ({ ...prevState, [name]: value }));
-    };
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        
+    const newErrors = {};
 
-     if (!formData.username || !formData.email || !formData.password) {
-      setError("All fields are required.");
-      return;
+    if (!username) {
+      newErrors.username = "Username is required";
+    }
+    if (!email) {
+      newErrors.email = "Email is required";
+    }
+    if (!password) {
+      newErrors.password = "Password is required";
     }
 
-    setError("");
-    console.log("Submitted Data:", formData);
-     
-        setError("");
-    console.log("Submitted Data:", formData);
-    // simulate API call
-    fetch("https://jsonplaceholder.typicode.com/posts", {
-      method: "POST",
-      body: JSON.stringify(formData),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((data) => console.log("API Response:", data));
+    setErrors(newErrors);
+
+    
+    if (Object.keys(newErrors).length === 0) {
+      console.log("Form submitted successfully:", { username, email, password });
+      
+    }
   };
 
   return (
@@ -40,29 +36,35 @@ const ControlledForm = () => {
         <label>Username:</label>
         <input
           type="text"
-          value={username}   
+          value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
+        {errors.username && <p style={{ color: "red" }}>{errors.username}</p>}
       </div>
+
       <div>
         <label>Email:</label>
         <input
           type="email"
-          value={email}   
+          value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        {errors.email && <p style={{ color: "red" }}>{errors.email}</p>}
       </div>
+
       <div>
         <label>Password:</label>
         <input
           type="password"
-          value={password}   
+          value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
+        {errors.password && <p style={{ color: "red" }}>{errors.password}</p>}
       </div>
+
       <button type="submit">Register</button>
     </form>
-    );
-}
+  );
+};
 
-export default ControlledForm;
+export default RegistrationForm;
