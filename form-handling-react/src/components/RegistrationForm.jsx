@@ -35,30 +35,33 @@ const ControlledForm = () => {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="p-4 space-y-4 max-w-sm mx-auto">
-      <h2 className="text-xl font-bold">User Registration (Controlled)</h2>
-
-      {error && <p className="text-red-500">{error}</p>}
-
-            <input
-                type="text"
-                name="username"
-                value={formData.username}
-                onChange={handleChange}
-            />
-            <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-            />
-            <input
-                type="password"
-                name="password"
-                value={formData.password}
-                />
-            <button type="submit">Submit</button>
-        </form>
+    <form onSubmit={handleSubmit}>
+      <div>
+        <label>Username:</label>
+        <input
+          type="text"
+          value={username}   
+          onChange={(e) => setUsername(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Email:</label>
+        <input
+          type="email"
+          value={email}   
+          onChange={(e) => setEmail(e.target.value)}
+        />
+      </div>
+      <div>
+        <label>Password:</label>
+        <input
+          type="password"
+          value={password}   
+          onChange={(e) => setPassword(e.target.value)}
+        />
+      </div>
+      <button type="submit">Register</button>
+    </form>
     );
 }
 
