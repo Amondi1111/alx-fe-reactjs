@@ -27,12 +27,12 @@ function App() {
 
       
         <Route
-          path="/profile/*"
-          element={
-            <ProtectedRoute isAuth={isAuthenticated}>
-              <Profile />
-            </ProtectedRoute>
-          }
+  path="/profile/*"
+  element={
+    <ProtectedRoute>
+      <Profile />
+    </ProtectedRoute>
+  }
         >
           
           <Route path="details" element={<ProfileDetails />} />
